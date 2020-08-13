@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="main">
+        <nav>
+            <i class="fas fa-clipboard-list"></i>
+            <span>ToDo App</span>
+        </nav>
+
+        <div class="body">
+            <div class="todo-input">
+                <input placeholder="Add New Todo" type="text">
+                <button class="add-todo"><i class="fas fa-plus-square"></i></button>
+                <button class="del-all"><i class="fas fa-trash-alt"></i></button>
+            </div>
+
+            <div class="todo-div">
+                <div class="todo-list"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- For Firebase -->
+<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-database.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyBG7mCf6bgGtPcSZ7Xu6CpvCxMiO5KlZu0",
+    authDomain: "todo-app--firebase-database.firebaseapp.com",
+    databaseURL: "https://todo-app--firebase-database.firebaseio.com",
+    projectId: "todo-app--firebase-database",
+    storageBucket: "todo-app--firebase-database.appspot.com",
+    messagingSenderId: "255988384448",
+    appId: "1:255988384448:web:c1a34e4537c217954b2325",
+    measurementId: "G-9JK8ETFZH6"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+
+<script src="./app.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+</html>
