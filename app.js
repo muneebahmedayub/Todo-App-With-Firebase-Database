@@ -1,4 +1,5 @@
 // SELECTORS
+const preloader = document.querySelector(".preloader")
 const todoList = document.querySelector(".todo-list")
 const todoInput = document.querySelector(".todo-input input")
 const addTodo = document.querySelector(".add-todo")
@@ -7,10 +8,18 @@ const delAll = document.querySelector(".del-all")
 // EVENT LISTENER
 addTodo.addEventListener('click', addDataFirebase)
 delAll.addEventListener('click', delAllData)
+window.addEventListener('keypress', (e) => {
+    if (e.keyCode === 13) {
+        addDataFirebase()
+    }
+})
 
 
 // Getting data from fireabase
 firebase.database().ref('todos').once('value', (data) => {
+    setTimeout(() => {
+        preloader.style.display = "none"
+    })
     data.forEach(element => {
         updateTodoList(element.child('key').val(), element.val())
     });
@@ -24,6 +33,7 @@ var key = 0;
 function addDataFirebase() {
     if (todoInput.value.length === 0) {
         todoInput.style.border = '1px solid red'
+        todoInput.focus()
     }
     else {
         if(todoList.childElementCount === 0){
@@ -41,6 +51,8 @@ function addDataFirebase() {
         firebase.database().ref('todos/' + key).set(todos)
 
         updateTodoList(todos.key, todos)
+        todoInput.style.border = 'none'
+        todoInput.focus()
     }
 }
 
@@ -130,115 +142,3 @@ function delAllData() {
     // delete all from firebase
     firebase.database().ref('todos').remove()
 }
-
-
-
-
-// // Functions
-// function addNewTodo() {
-//     if (todoInput.value.length === 0) {
-//         alert("Please Enter A Todo")
-//     }
-//     else {
-//         const newTodo = document.createElement("div")
-//         newTodo.classList.add("new-todo")
-
-//         const todo = document.createElement("input")
-//         todo.classList.add("todo")
-//         newTodo.appendChild(todo)
-//         todo.disabled = true
-//         todo.value = todoInput.value
-//         todoInput.value = ""
-
-//         const editTodo = document.createElement("button")
-//         editTodo.classList.add("edit-btn")
-//         newTodo.appendChild(editTodo)
-//         editTodo.innerHTML = '<i class="fas fa-edit"></i>'
-//         editTodo.setAttribute("onclick", "edit(this)")
-
-
-//         const delTodo = document.createElement("button")
-//         delTodo.classList.add("del-btn")
-//         newTodo.appendChild(delTodo)
-//         delTodo.innerHTML = '<i class="fas fa-minus-circle"></i>'
-//         delTodo.setAttribute("onclick", "del(this)")
-
-//         todoList.appendChild(newTodo)
-//     }
-// }
-
-// function deleteAll() {
-//     todoList.innerHTML = ""
-// }
-
-
-// function del(e) {
-//     const newTodo = e.parentNode
-//     newTodo.classList.add("fall")
-//     newTodo.addEventListener("transitionend", function () {
-//         newTodo.remove()
-//     })
-// }
-
-
-// var edited = true
-// function edit(e) {
-//     const todo = e.parentNode.firstChild
-
-//     if (edited === true) {
-//         todo.disabled = false
-//         todo.classList.add("center")
-//         todo.focus()
-//         e.firstChild.remove()
-//         e.innerHTML = '<i class="fas fa-check-circle"></i>'
-
-//         edited = false
-//     }
-//     else if (edited === false) {
-//         todo.disabled = true
-//         todo.classList.remove("center")
-//         e.firstChild.remove()
-//         e.innerHTML = '<i class="fas fa-edit"></i>'
-
-//         edited = true
-//     }
-
-// }
-
-
-// todoInput.addEventListener("keypress", enterKey)
-
-
-// function enterKey (e) {
-//     if (e.keyCode === 13) {
-//         if (todoInput.value.length === 0) {
-//             alert("Please Enter A Todo")
-//         }
-//         else {
-//             const newTodo = document.createElement("div")
-//             newTodo.classList.add("new-todo")
-
-//             const todo = document.createElement("input")
-//             todo.classList.add("todo")
-//             newTodo.appendChild(todo)
-//             todo.disabled = true
-//             todo.value = todoInput.value
-//             todoInput.value = ""
-
-//             const editTodo = document.createElement("button")
-//             editTodo.classList.add("edit-btn")
-//             newTodo.appendChild(editTodo)
-//             editTodo.innerHTML = '<i class="fas fa-edit"></i>'
-//             editTodo.setAttribute("onclick", "edit(this)")
-
-
-//             const delTodo = document.createElement("button")
-//             delTodo.classList.add("del-btn")
-//             newTodo.appendChild(delTodo)
-//             delTodo.innerHTML = '<i class="fas fa-minus-circle"></i>'
-//             delTodo.setAttribute("onclick", "del(this)")
-
-//             todoList.appendChild(newTodo)
-//         }
-//     }
-// }

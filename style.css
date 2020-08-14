@@ -1,185 +1,233 @@
 * {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-    font-family: "poppins", sans-serif;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
 }
+
+.preloader {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: white;
+}
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #ff930f;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
 .main {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 /* Navbar */
 nav {
-    height: 8vh;
-    width: 100%;
-    background-color: brown;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    box-shadow: 0px 5px 20px grey;
+  height: 8vh;
+  width: 100%;
+  background-color: brown;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0px 5px 20px grey;
 }
-nav i, nav span {
-    font-size: 30px;
-    font-weight: 800;
-    color: white;
-    margin-left: 15px;
+nav i,
+nav span {
+  font-size: 30px;
+  font-weight: 800;
+  color: white;
+  margin-left: 15px;
 }
-
 
 /* Body */
 .body {
-    background-image: linear-gradient(to right, #fff95b, #ff930f);
-    width: 100%;
-    height: 92vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 20vh 1fr;
+  background-image: linear-gradient(to right, #fff95b, #ff930f);
+  width: 100%;
+  height: 92vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 20vh 1fr;
 }
 
 /* Todo input */
 .todo-input {
-    width: 100%;
-    height: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
-.todo-input input, .todo-input button {
-    padding: 5px;
-    font-size: 15px;
-    border: none;
-    outline: none;
-    transition: 0.3s transform ease;
+.todo-input input,
+.todo-input button {
+  padding: 5px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  transition: 0.3s transform ease;
 }
 .todo-input .add-todo {
-    background-color: white;
-    color: #ff930f;
-    padding: 5px 10px;
-    cursor: pointer;
+  background-color: white;
+  color: #ff930f;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 .todo-input .add-todo:hover {
-    background-color: #ff930f;
-    color: white;
+  background-color: #ff930f;
+  color: white;
 }
 .todo-input i {
-    transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 .todo-input button:hover i {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .todo-input .del-all {
-    background-color: white;
-    color: red;
-    padding: 5px 10px;
-    cursor: pointer;
+  background-color: white;
+  color: red;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 .todo-input .del-all:hover {
-    background-color: red;
-    color: white;
+  background-color: red;
+  color: white;
 }
-
 
 /* Todo list */
 .todo-div {
-    width: 100%;
-    height: 72vh;
-    padding: 30px;
+  width: 100%;
+  height: 72vh;
+  padding: 30px;
 }
 .todo-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 65vh;
-    overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 65vh;
+  overflow-y: scroll;
 }
 ::-webkit-scrollbar {
-    width: 0px;
+  width: 0px;
 }
 
 /* New Todo */
 .new-todo {
-    margin: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.5s ease;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s ease;
 }
 .todo {
-    width: 250px;
-    background-color: white;
-    padding: 4px 10px;
-    border: none;
-    outline: none;
-    border-bottom: 2px solid blue !important;
-    transition: 0.6s ease;
+  width: 250px;
+  background-color: white;
+  padding: 4px 10px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid blue !important;
+  transition: 0.6s ease;
 }
 .new-todo button {
-    padding: 5px 10px; 
-    border: none;
-    outline: none;
+  padding: 5px 10px;
+  border: none;
+  outline: none;
 }
 /* edit btn */
 .edit-btn {
-    background-color: white;
-    color: green;
-    cursor: pointer;
+  background-color: white;
+  color: green;
+  cursor: pointer;
 }
 .edit-btn:hover {
-    color: white;
-    background-color: green;
+  color: white;
+  background-color: green;
 }
 .edit-btn i {
-    transition: 0.3s ease;
-    pointer-events: none;
+  transition: 0.3s ease;
+  pointer-events: none;
 }
 .edit-btn:hover i {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 /* del btn */
 .del-btn {
-    background-color: white;
-    color: red;
-    cursor: pointer;
+  background-color: white;
+  color: red;
+  cursor: pointer;
 }
 .del-btn:hover {
-    color: white;
-    background-color: red;
+  color: white;
+  background-color: red;
 }
 .del-btn i {
-    transition: 0.3s ease;
-    pointer-events: none;
+  transition: 0.3s ease;
+  pointer-events: none;
 }
 .del-btn:hover i {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* new-todo animation */
 .fall {
-    transform: translateY(8rem) rotate(20deg);
-    opacity: 0;
+  transform: translateY(8rem) rotate(20deg);
+  opacity: 0;
 }
 
 /* for centering todo */
 .center {
-    padding: 4px 70px;
+  padding: 4px 70px;
 }
+
+/* ANIMATIONS */
+
+@keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes animatebottom {
+    from {
+      bottom: -100px;
+      opacity: 0;
+    }
+    to {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
+  
+
+
 
 
 @media screen and (max-width: 600px) {
-    .todo-input {
-        width: 90%;
-    }
-    .todo-input input {
-        width: 100%;
-    }
-    .todo {
-        width: 150px;
-    }
-    .center {
-        padding: 4px 40px;
-    }
+  .todo-input {
+    width: 90%;
+  }
+  .todo-input input {
+    width: 100%;
+  }
+  .todo {
+    width: 150px;
+  }
+  .center {
+    padding: 4px 40px;
+  }
 }
