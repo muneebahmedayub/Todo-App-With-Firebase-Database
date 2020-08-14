@@ -26,7 +26,14 @@ function addDataFirebase() {
         todoInput.style.border = '1px solid red'
     }
     else {
-        key = todoList.childNodes.length
+        if(todoList.childElementCount === 0){
+            key = 1
+        }
+        else {
+            key = parseInt(todoList.lastChild.childNodes[1].innerHTML) + 1
+
+        }
+
         var todos = {
             key: key,
             todo: todoInput.value
